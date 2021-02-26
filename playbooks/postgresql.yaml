@@ -22,18 +22,15 @@
     owner: postgres
     group: postgres
     mode: "0600"
+  notify:
+  - RESTART POSTGRESQL
 
-- name: RESTART POSTGRESQL SERVICE
-  ansible.builtin.service:
-    name: postgresql
-    state: restarted
-
-- name: CREATE NAUTOBOT DATABSE
+- name: CREATE NAUTOBOT DATABASE
   community.postgresql.postgresql_db:
     name: nautobot
     state: present
 
-- name: CREATE NAUTOBOT DATABSE USER ACCOUNT AND GRANT PRIVILEGES TO DATABASE
+- name: CREATE NAUTOBOT DATABASE USER ACCOUNT AND GRANT PRIVILEGES TO DATABASE
   community.postgresql.postgresql_user:
     db: "{{ nautobot.db.name }}" 
     name: "{{ db_username }}" 

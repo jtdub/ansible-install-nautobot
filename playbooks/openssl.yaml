@@ -1,2 +1,4 @@
 - name: CREATE SELF SIGNED SSL CERTIFICATE
   ansible.builtin.command: "openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout {{ cert_path }}/private/nautobot.key -out {{ cert_path }}/certs/nautobot.crt -subj '/C={{ country }}/ST={{ state }}/L={{ city }}/CN={{ domain }}'"
+  notify:
+  - RESTART NGINX

@@ -38,3 +38,6 @@
 
   - name: SETUP NGINX
     include: nginx.yaml
+
+  handlers:
+  - include: handlers.yaml

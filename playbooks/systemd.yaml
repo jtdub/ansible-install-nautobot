@@ -5,6 +5,8 @@
     owner: root 
     group: root
     mode: 0644
+  notify:
+  - RESTART NAUTOBOT-RQ
 
 - name: CREATE NAUTOBOT SYSTEMD SERVICE
   ansible.builtin.template:
@@ -13,6 +15,8 @@
     owner: root 
     group: root
     mode: 0644
+  notify:
+  - RESTART NAUTOBOT
 
 - name: RELOAD SYSTEMD DAEMON
   ansible.builtin.command: systemctl daemon-reload

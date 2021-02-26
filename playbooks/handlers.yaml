@@ -1,0 +1,19 @@
+- name: RESTART NGINX
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+
+- name: RESTART POSTGRESQL 
+  ansible.builtin.service:
+    name: postgresql
+    state: restarted
+
+- name: RESTART NAUTOBOT 
+  ansible.builtin.service:
+    name: nautobot
+    state: restarted
+
+- name: RESTART NAUTOBOT-RQ 
+  ansible.builtin.service:
+    name: nautobot-rq
+    state: restarted

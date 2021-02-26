@@ -18,6 +18,8 @@
     owner: root
     group: root
     mode: 0644
+  notify:
+  - RESTART NGINX
 
 - name: CONFIGURE NGINX FOR NAUTOBOT
   ansible.builtin.template:
@@ -32,6 +34,8 @@
     src: /etc/nginx/sites-available/nautobot.conf
     dest: /etc/nginx/sites-enabled/nautobot.conf
     state: link
+  notify:
+  - RESTART NGINX
 
 - name: START NGINX
   ansible.builtin.service:
