@@ -18,26 +18,29 @@
   - name: SYSTEM PACKAGES PLAYS
     include: system-packages.yaml 
 
-  - name: CLONE NAUTOBOT
+  - name: CLONE NAUTOBOT PLAYS
     include: git.yaml
 
-  - name: SETUP SYSTEM ACCOUNT
+  - name: SYSTEM ACCOUNT PLAYS
     include: account.yaml
 
-  - name: RUN NAUTOBOT INSTALL
+  - name: NAUTOBOT INSTALL PLAYS
     include: nautobot-install.yaml
 
-  - name: SETUP GUNICORN
+  - name: GUNICORN PLAYS
     include: gunicorn.yaml
 
-  - name: SETUP SYSTEMD
+  - name: SYSTEMD PLAYS
     include: systemd.yaml
 
-  - name: SETUP SSL CERTIFICATE
+  - name: SSL CERTIFICATE PLAYS
     include: openssl.yaml
 
-  - name: SETUP NGINX
+  - name: NGINX PLAYS
     include: nginx.yaml
+
+  - name: SELINUX PLAYS
+    include: selinux.yaml
 
   handlers:
   - include: handlers.yaml
