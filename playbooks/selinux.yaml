@@ -1,4 +1,4 @@
-- name: SELINUX: ALLOW NGINX TO COMMMUNICATE WITH NAUTOBOT
+- name: SELINUX - ALLOW NGINX TO COMMMUNICATE WITH NAUTOBOT
   ansible.posix.seboolean:
     name: httpd_can_network_connect
     state: yes
