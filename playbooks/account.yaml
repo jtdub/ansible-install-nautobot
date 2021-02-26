@@ -1,0 +1,22 @@
+- name: ADD NAUTOBOT GROUP
+  ansible.builtin.group:
+    name: nautobot
+    system: yes
+    state: present
+
+- name: ADD NAUTOBOT ACCOUNT
+  ansible.builtin.user:
+    name: nautobot
+    home: /opt/nautobot
+    system: yes
+    groups:
+    - nautobot
+    state: present
+
+- name: SET PERMISSIONS ON NAUTOBOT HOME
+  ansible.builtin.file:
+    name: /opt/nautobot
+    owner: nautobot
+    group: nautobot
+    recurse: yes
+    state: directory

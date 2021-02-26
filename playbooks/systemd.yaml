@@ -1,0 +1,30 @@
+- name: CREATE NAUTOBOT-RQ SYSTEMD SERVICE
+  ansible.builtin.template:
+    src: nautobot-rq.service 
+    dest: /etc/systemd/system/nautobot-rq.service
+    owner: root 
+    group: root
+    mode: 0644
+
+- name: CREATE NAUTOBOT SYSTEMD SERVICE
+  ansible.builtin.template:
+    src: nautobot.service 
+    dest: /etc/systemd/system/nautobot.service
+    owner: root 
+    group: root
+    mode: 0644
+
+- name: RELOAD SYSTEMD DAEMON
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: START NAUTOBOT
+  ansible.builtin.service:
+    name: nautobot
+    state: started
+    enabled: yes
+
+- name: START NAUTOBOT-RQ
+  ansible.builtin.service:
+    name: nautobot-rq
+    state: started
+    enabled: yes

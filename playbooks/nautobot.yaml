@@ -1,0 +1,40 @@
+- hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: db_username
+      prompt: "Database Username"
+      private: no
+    - name: db_password
+      prompt: "Database Password"
+      private: yes
+
+  tasks:
+  - name: POSTGRESQL PLAYS 
+    include: postgresql.yaml
+
+  - name: REDIS PLAYS
+    include: redis.yaml
+
+  - name: SYSTEM PACKAGES PLAYS
+    include: system-packages.yaml 
+
+  - name: CLONE NAUTOBOT
+    include: git.yaml
+
+  - name: SETUP SYSTEM ACCOUNT
+    include: account.yaml
+
+  - name: RUN NAUTOBOT INSTALL
+    include: nautobot-install.yaml
+
+  - name: SETUP GUNICORN
+    include: gunicorn.yaml
+
+  - name: SETUP SYSTEMD
+    include: systemd.yaml
+
+  - name: SETUP SSL CERTIFICATE
+    include: openssl.yaml
+
+  - name: SETUP NGINX
+    include: nginx.yaml

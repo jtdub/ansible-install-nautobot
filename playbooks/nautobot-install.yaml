@@ -1,0 +1,2 @@
+- name: RUN NAUTOBOT INSTALL
+  ansible.builtin.command: sudo -u nautobot /opt/nautobot/install.sh

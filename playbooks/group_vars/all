@@ -1,0 +1,11 @@
+nautobot:
+  allowed_hosts:
+  - nautobot.jtdub.com
+  - 47.221.167.40 
+  db:
+    name: nautobot
+country: US
+state: TX
+city: Austin
+domain: nautobot.jtdub.com
+cert_path: /etc/pki/tls

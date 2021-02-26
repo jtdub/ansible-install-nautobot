@@ -1,0 +1,7 @@
+- name: SETUP GUNICORN
+  ansible.builtin.template:
+    src: gunicorn.py
+    dest: /opt/nautobot/gunicorn.py
+    owner: nautobot 
+    group: nautobot 
+    mode: 0644

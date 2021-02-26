@@ -1,0 +1,42 @@
+- name: INSTALL POSTGRESQL
+  yum:
+    name:
+    - postgresql-server
+    - libpq-devel
+    state: present
+
+- name: INITIALIE POSTGRESQL
+  ansible.builtin.command: postgresql-setup --initdb
+  ignore_errors: yes
+
+- name: START POSTGRESQL SERVICE
+  ansible.builtin.service:
+    name: postgresql
+    enabled: yes
+    state: started
+
+- name: UPDATE PG_HBA.CONF FILE
+  ansible.builtin.template:
+    src: pg_hba.conf
+    dest: /var/lib/pgsql/data/pg_hba.conf
+    owner: postgres
+    group: postgres
+    mode: "0600"
+
+- name: RESTART POSTGRESQL SERVICE
+  ansible.builtin.service:
+    name: postgresql
+    state: restarted
+
+- name: CREATE NAUTOBOT DATABSE
+  community.postgresql.postgresql_db:
+    name: nautobot
+    state: present
+
+- name: CREATE NAUTOBOT DATABSE USER ACCOUNT AND GRANT PRIVILEGES TO DATABASE
+  community.postgresql.postgresql_user:
+    db: "{{ nautobot.db.name }}" 
+    name: "{{ db_username }}" 
+    password: "{{ db_password }}" 
+    priv: ALL
+    state: present

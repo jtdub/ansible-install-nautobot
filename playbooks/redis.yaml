@@ -1,0 +1,10 @@
+- name: INSTALL REDIS
+  ansible.builtin.yum:
+    name: redis
+    state: present
+
+- name: START REDIS SERVICE
+  ansible.builtin.service:
+    name: redis
+    state: started
+    enabled: yes
