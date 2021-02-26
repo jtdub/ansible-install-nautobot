@@ -8,6 +8,7 @@ This repository is a set of playbooks that installs everything that is needed fo
  2. Enter the repository directory.
 	 2a. `cd ansible-install-nautobot`
  3. Execute `./scripts/run.sh`. This ensures that the necessary packages are installed to run the ansible playbooks.
- 4. Execute ansible.
-	 4a. `ansible-playbook -b playbooks/nautobot.yaml`
- 5. Profit.
+ 4. Modify `./playbooks/group_vars/all` to suite your needs.
+ 5. Execute ansible.
+	 5a. `ansible-playbook -b playbooks/nautobot.yaml`
+ 6. Profit.
