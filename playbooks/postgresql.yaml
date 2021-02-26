@@ -22,8 +22,13 @@
     owner: postgres
     group: postgres
     mode: "0600"
-  notify:
-  - RESTART POSTGRESQL
+  register: update_hba
+
+- name: RESTART POSTGRESQL
+  ansible.builtin.service:
+    name: postgres
+    state: restarted
+  when: "{{ update_hba.changed == true }}"
 
 - name: CREATE NAUTOBOT DATABASE
   community.postgresql.postgresql_db:

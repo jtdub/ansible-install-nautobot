@@ -1,3 +1,7 @@
 - name: RUN NAUTOBOT INSTALL
   ansible.builtin.command: /opt/nautobot/install.sh
   become_user: nautobot
+
+- name: RUN NAUTOBOT COLLECTSTATIC
+  ansible.builtin.command: /opt/nautobot/venv/bin/nautobot-server --config /opt/nautobot/nautobot_config.py collectstatic
+  become_user: nautobot
